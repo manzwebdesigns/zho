@@ -1,0 +1,173 @@
+@import '~@fortawesome/fontawesome-free/css/fontawesome.css';
+@import '~@fortawesome/fontawesome-free/css/regular.css';
+@import '~@fortawesome/fontawesome-free/css/solid.css';
+@import '~@fortawesome/fontawesome-free/css/brands.css';
+/** General */
+body {
+    background: url('../img/ZH-Background.jpg') fixed repeat 0 0;
+    font-family: 'Raleway', sans-serif;
+}
+
+section#content, footer#footer {
+    margin: -12px 0 12px 0;
+}
+
+.h1, h1 {
+    font-size: 4rem;
+    font-family: 'UnifrakturMaguntia', cursive;
+}
+
+.h2, h2 {
+    font-size: 1.75rem;
+}
+
+a, a:hover, a.menu-link {
+    color: #b7a350 !important;
+}
+
+h1 {
+    color: #b7a350;
+}
+
+ul {
+    display: flex;
+    list-style-type: none;
+    margin-right: 10px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a.hdr-logo-link:hover {
+    text-decoration: none !important;
+}
+
+section#content, footer#footer {
+    background-color: #dedede;
+    border: solid 1px #CEA590;
+}
+
+section#content {
+    border-radius: 6px 6px 0 0;
+    border-bottom: none;
+}
+
+.wrapper.col.align-self-center {
+    margin: 6px;
+}
+
+footer#footer {
+    border-radius: 0 0 6px 6px;
+}
+/** END General */
+
+/** Menu Rules */
+
+.nav-main .menu-item a {
+    padding: 18px;
+}
+
+.nav-main .menu-item a:hover,
+.nav-main .current_page_item {
+    font-weight: bold;
+}
+
+figure.wp-block-image.size-medium.is-resized.is-style-rounded {
+    float: right;
+    margin-right: 15px;
+}
+
+#fbuilder .fields {
+    display: flow-root;
+}
+
+/** END Menu Rules */
+
+/** Hymns page */
+.hymn-categories {
+    margin-top: 12px;
+}
+
+.hymn-category {
+    text-indent: .16in;
+}
+
+.post-type-hymn .card-deck .card {
+    min-width: 14em;
+}
+
+.post-type-hymn .card-header {
+    padding: unset;
+}
+
+.post-type-hymn .card-header a,
+.post-type-hymn .card-footer a {
+    font-size: .7rem;
+}
+
+.card-body {
+    padding: .5rem;
+}
+
+.post-type-hymn .card-text {
+    max-height: 260px;
+    margin: 8px 0 0;
+}
+
+.post-type-hymn .card-text,
+.post-type-hymn .card-footer {
+    font-size: 12px;
+}
+
+.post-type-hymn .card-text i.fas {
+    font-size: 18px;
+}
+
+.search-hymns {
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUiIGhlaWdodD0iMTYiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPjx1c2UgeGxpbms6aHJlZj0iI3BhdGgwX2ZpbGwiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAgLTEuMTEpIiBmaWxsPSIjODk5OUEzIi8+PGRlZnM+PHBhdGggaWQ9InBhdGgwX2ZpbGwiIGQ9Ik0xMC40MjYgNy43MTRjMCAyLjIwNi0xLjc5NCA0LTQgNC0yLjIwNSAwLTQtMS43OTQtNC00IDAtMi4yMDUgMS43OTUtNCA0LTQgMi4yMDYgMCA0IDEuNzk1IDQgNHptNC41NzIgNy40MjlhMS4xNSAxLjE1IDAgMDAtLjMzLS44MDRsLTMuMDYzLTMuMDYyYTYuMjg0IDYuMjg0IDAgMDAtNS4xNzktOS44NDhBNi4yODQgNi4yODQgMCAwMC4xNDEgNy43MTRhNi4yODQgNi4yODQgMCAwMDkuODQ4IDUuMTc5bDMuMDYyIDMuMDUzYy4yMDYuMjE1LjUuMzQuODA0LjM0YTEuMTUgMS4xNSAwIDAwMS4xNDMtMS4xNDN6Ii8+PC9kZWZzPjwvc3ZnPg==); /* Add a search icon to input */
+    background-position: 97% 50%; /* Position the search icon */
+    background-repeat: no-repeat; /* Do not repeat the icon image */
+    background-size: 20px; /* Resize the search icon */
+    font-size: 16px; /* Increase font-size */
+    padding: 10px 40px 10px 20px !important; /* Add some padding */
+    border: 1px solid #ddd; /* Add a grey border */
+    margin-bottom: 12px; /* Add some space below the input */
+}
+
+button.play-hymn {
+    color: #b7a350;
+}
+
+.play-hymn, .hymn-score {
+    margin-left: 12px;
+    padding: 0;
+    border: none;
+}
+
+.play-hymn i, .hymn-score i, .hymn-info i {
+    width: 16px;
+    height: 16px;
+    padding: 0;
+}
+
+/** END Hymns page */
+/** Footer Rules */
+
+footer#footer div {
+    padding: 6px;
+}
+
+footer .copyright,
+footer .designer {
+    text-align: center;
+    width: 100%;
+}
+
+footer .designer {
+    font-size: 12px;
+}
+
+footer#footer {
+    text-align: center;
+}

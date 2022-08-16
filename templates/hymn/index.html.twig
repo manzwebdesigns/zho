@@ -1,0 +1,100 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hymns{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('hymns') }}
+{% endblock %}
+
+{% block body %}
+    <div class="content-wrapper">
+        <article class="post-type-hymn" id="post">
+            <section class="article-content row">
+                <h2 class="article-h2 col-md-6">Hymns</h2>
+                <input type="search" class="search-hymns col-md-6" placeholder="Search hymns"/>
+                <div class="article-body">
+                    <div class="card-deck row">
+                        {% for hymn in hymns %}
+                            {% set hymnTitle = hymn.HymnTitle|title %}
+                            {% if hymnTitle is same as('The 23Rd Psalm (#212)') %}
+                                {% set hymnTitle = 'The 23rd Psalm (#212)' %}
+                            {% endif %}
+                            <div id="hymn{{ hymn.HymnNum }}" class="card border-dark mb-2 col-md-3">
+                                <div class="card-body">
+                                    <h6 class="card-header border-dark">
+                                        <a class="btn btn-toolbar" data-bs-toggle="collapse"
+                                           href="#collapse{{ hymn.HymnNum }}"
+                                           role="button" aria-expanded="false"
+                                           aria-controls="collapse{{ hymn.HymnNum }}"
+                                        >{{ hymnTitle }}</a>
+                                    </h6>
+                                    <div class="card-text overflow-auto collapse"
+                                         id="collapse{{ hymn.HymnNum }}">{{ hymn.HymnText|nl2br }}</div>
+                                    <div class="card-text border-dark">
+                                        <a data-bs-toggle="collapse" href="#collapse{{ hymn.HymnNum }}_footer"
+                                           role="button" aria-expanded="false" class="float-left hymn-info"
+                                           aria-controls="collapse{{ hymn.HymnNum }}_footer">
+                                            <i class="fas fa-info-circle" title="Click for hymn information!"></i>
+                                        </a>
+                                        {% set hymnPathTitle = '/assets/pdf/' ~ hymnTitle|replace({'!': ''})|url_encode %}<a href="#" data-bs-toggle="modal" data-bs-target="#hymn_img_{{ hymn.HymnNum }}" class="float-left hymn-score">
+                                            <i class="fas fa-file-image" title="Click to view an image of the hymn score!"></i>
+                                        </a>
+                                        <div id="hymn_img_{{ hymn.HymnNum }}" class="modal fade bd-hymn-image" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-lg">
+                                                <div class="modal-content container">
+                                                    <div class="modal-header row">
+                                                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body row">
+                                                        {% if hymn.ScorePageCount > 1 %}
+                                                            {% for i in 1..hymn.ScorePageCount %}
+                                                                <img class="w-100" src="{{ hymnPathTitle }}_{{ i }}.jpg" alt="{{ hymnTitle ~ ' page ' ~ i }}" />
+                                                            {% endfor %}
+                                                        {% else %}
+                                                            <img class="w-100" src="{{ hymnPathTitle }}.jpg" alt="{{ hymnTitle }}" />
+                                                        {% endif %}
+                                                    </div>
+                                                    <div class="modal-footer row">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a href="{{ hymnPathTitle }}.pdf"
+                                           target="_blank" class="float-left hymn-score">
+                                            <i class="fas fa-file-pdf" title="Click to view a PDF of the hymn score!"></i>
+                                        </a>
+                                        <audio id="player{{ hymn.HymnNum }}"
+                                               src="/assets/audio/{{ hymnTitle|replace({'!': ''})|url_encode }}.mp3"
+                                               type="audio/mpeg">
+                                            <a href="https://browsehappy.com/" target="_blank">
+                                                <i class="fas fa-ban"
+                                                   title="Sorry, but your browser doesn't allow me to display the control.  Please upgrade."></i>
+                                            </a>
+                                        </audio>
+                                        <button class="play-hymn hymn-audio"><i class="fas fa-play"></i></button>
+                                    </div>
+                                    <div class="card-footer collapse" id="collapse{{ hymn.HymnNum }}_footer">
+                                        {{ hymn.HymnInfo|nl2br }}
+                                        <div class="hymn-categories">
+                                            <div><strong>Hymn Categories</strong></div>
+                                            {% if hymn.ListID1 is not same as('') %}
+                                                <div class="hymn-category">{{ hymn.ListID1 }}</div>
+                                            {% endif %}
+                                            {% if hymn.ListID2 is not same as('') %}
+                                                <div class="hymn-category">{{ hymn.ListID2 }}</div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </section>
+        </article>
+    </div><!-- /content-wrapper -->
+{% endblock %}
