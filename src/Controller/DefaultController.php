@@ -80,6 +80,8 @@ EOF
 );
 
             $mailer->send($objemail);
+
+            return $this->render('default/index.html.twig');
         }
 
         return $this->render('default/contact.html.twig', [
