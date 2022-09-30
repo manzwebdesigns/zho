@@ -50,9 +50,9 @@ class DefaultController extends AbstractController
             $message = $form['message']->getData();
 
             $objemail = (new Email())
-                ->from('webmaster@zionsharp.online')
+                ->from('zionsharponline@gmail.com')
                 ->to($email)
-                ->replyTo('webmaster@zionsharp.online')
+                ->replyTo('zionsharponline@gmail.com')
                 ->subject('Thank you for contacting ZHO')
                 ->text('We have received your message and will respond soon!')
                 ->html('<p>We have received your message and will respond soon!</p>');
@@ -61,7 +61,7 @@ class DefaultController extends AbstractController
 
             $objemail = (new Email())
                 ->from($email)
-                ->to('webmaster@zionsharp.online')
+                ->to('zionsharponline@gmail.com')
                 ->replyTo($email)
                 ->subject('New message from ZHO contact page')
                 ->html(<<<EOF
@@ -81,7 +81,12 @@ EOF
 
             $mailer->send($objemail);
 
-            return $this->render('default/index.html.twig');
+            $this->addFlash(
+                'success',
+                'Your email has been sent!'
+            );
+
+            return $this->redirectToRoute('app_home');
         }
 
         return $this->render('default/contact.html.twig', [

@@ -31,8 +31,11 @@
                         <div class="col-md-2 mt-4">
                             <form class="float-md-end" action="https://www.paypal.com/donate" method="post" target="_blank">
                                 <input type="hidden" name="hosted_button_id" value="BGC56ZUBVF5XE" />
-                                <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
-                                <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+                                <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif"
+                                       name="submit"
+                                       title="PayPal - The safer, easier way to pay online!"
+                                       alt="Donate with PayPal button" />
+                                <img alt="" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
                             </form>
                         </div>
                     </a>
@@ -72,6 +75,13 @@
 
         <section id="content" role="main" class="content-wrapper row">
             <div class="wrapper col align-self-center">
+                {% for label, messages in app.flashes %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ label }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endfor %}
                 {% block body %}
                     Sorry, no content
                 {% endblock %}
@@ -82,8 +92,7 @@
             <footer id="footer" class="row">
                 <div class="copyright">Copyright © 2009-{{ "now"|date("y") }} Zion's Harp Online</div>
                 <div class="designer">
-                    Website design by <a href="https://www.manzwebdesigns.com/"
-                                         target="_blank">Manz Web Designs, LLC</a>
+                    Website design by <a href="https://www.manzwebdesigns.com/" target="_blank">Manz Web Designs, LLC</a>
                 </div>
             </footer>
         {% endblock %}
