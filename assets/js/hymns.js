@@ -28,18 +28,29 @@ $('document').ready(function () {
         });
     });
 
+    let filter;
     $('.search-hymns').on('keyup click', function () {
-        let filter = $(this).val();
+        filter = $(this).val();
         if(filter.length > 0) {
             $('.card-deck .card').each(function () {
                 let objThis = $(this);
+                $('span.zho-found').contents().unwrap();
                 objThis.hide();
-                let txtValue = objThis.text().toUpperCase();
-                if (txtValue.indexOf(filter.toUpperCase()) >= 0) {
+                let txtValue = objThis.find('.card-text.overflow-auto').text();
+                objThis.removeClass('visible');
+                if (txtValue.indexOf(filter) >= 0) {
                     objThis.show();
+                    objThis.addClass('visible');
                 }
             });
+
+            $('.card-deck .card.visible .card-text.overflow-auto').each(function () {
+                let objThis = $(this);
+                let newValue = objThis.html().replace(filter, '<span class="zho-found">' + filter + '</span>');
+                objThis.html(newValue);
+            });
         } else {
+            $('span.zho-found').contents().unwrap();
             $('.card-deck .card').show();
         }
     });
