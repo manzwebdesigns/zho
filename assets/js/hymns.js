@@ -28,6 +28,13 @@ $('document').ready(function () {
         });
     });
 
+    String.prototype.replaceAll = function(s1, s2) {
+        return this.replace(
+            new RegExp(  s1.replace(/[.^$*+?()[{\|]/g, '\\$&'),  'g'  ),
+            s2
+        );
+    };
+
     let filter;
     $('.search-hymns').on('keyup click', function () {
         filter = $(this).val();
@@ -46,7 +53,7 @@ $('document').ready(function () {
 
             $('.card-deck .card.visible .card-text.overflow-auto').each(function () {
                 let objThis = $(this);
-                let newValue = objThis.html().replace(filter, '<span class="zho-found">' + filter + '</span>');
+                let newValue = objThis.html().replaceAll(filter, '<span class="zho-found">' + filter + '</span>');
                 objThis.html(newValue);
             });
         } else {
